@@ -1,6 +1,6 @@
 name: CI
 
-on: [push, pull_request]
+on: [create]
 
 jobs:
   build:
@@ -35,7 +35,7 @@ jobs:
 
     - name: Build
       shell: bash
-      run: cmake --build build --config Release
+      run: cmake --build build --config Release -j $(nproc)
 
     - name: Install
       shell: bash
