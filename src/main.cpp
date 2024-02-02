@@ -1,17 +1,25 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Network.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/System.hpp>
 
 int main()
 {
-    auto window = sf::RenderWindow{ { 1920u, 1080u }, "CMake SFML Project" };
-    window.setFramerateLimit(144);
+    auto videoMode = sf::VideoMode(sf::Vector2u(360, 640));
+    sf::VideoMode screen(videoMode);
+    sf::RenderWindow window(screen, "");
+    window.setFramerateLimit(30);
 
     while (window.isOpen())
     {
-        for (auto event = sf::Event{}; window.pollEvent(event);)
+        for (sf::Event event; window.pollEvent(event);)
         {
-            if (event.type == sf::Event::Closed)
+            switch (event.type)
             {
-                window.close();
+                case sf::Event::Closed:
+                    window.close();
+                    break;
             }
         }
 
