@@ -39,3 +39,9 @@ jobs:
     - name: Install
       shell: bash
       run: cmake --install build --config Release
+
+    - name: Archive build artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-bin
+        path: build/bin
